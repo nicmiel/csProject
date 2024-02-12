@@ -1,14 +1,25 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import cart_icon from './components/Assets/cart-icon.png'
+import { useContext } from "react"
+import { ShopContext } from "./Context/ShopContext"
 
 export default function Navbar() {
+
+  const {getTotalCartItems} = useContext(ShopContext);
+
   return (
     <nav className="nav">
+      <ul>
       <Link to="/" className="site-title">
         Site Name
       </Link>
-      <ul>
         <CustomLink to="/pricing">Pricing</CustomLink>
         <CustomLink to="/about">About</CustomLink>
+      </ul>
+      <ul>
+        <CustomLink to="/login"><button>Login</button></CustomLink>
+        <CustomLink to="/cart"><img src={cart_icon} alt=""/></CustomLink>
+        <p>{getTotalCartItems()}</p>
       </ul>
     </nav>
   )
