@@ -17,7 +17,10 @@ export default function Navbar() {
         <CustomLink to="/about">About</CustomLink>
       </ul>
       <ul>
-        <CustomLink to="/login"><button>Login</button></CustomLink>
+        {localStorage.getItem("auth-token")
+        ?<button onClick={()=>{localStorage.removeItem("auth-token");window.location.replace("/")}}>Logout</button>
+        :<CustomLink to="/login"><button>Login</button></CustomLink>}
+        
         <CustomLink to="/cart"><img src={cart_icon} alt=""/></CustomLink>
         <p>{getTotalCartItems()}</p>
       </ul>

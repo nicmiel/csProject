@@ -48,7 +48,7 @@
     color: #ff4141;
 
 }
-.productdisplay-right button{
+.cart-button{
     padding: 20px 40px;
     width: 200px;
     font-size: 16px;
@@ -58,5 +58,25 @@
     margin-bottom: 40px;
     border: none;
     outline: none;
+    cursor: pointer;
+}
+.minus{
+    width: 64px;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    background: #fff;
+    cursor: pointer;
+}
+.number{
+    width: 64px;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    background: #fff;
+}
+.plus{
+    width: 64px;
+    height: 50px;
+    border: 2px solid #ebebeb;
+    background: #fff;
     cursor: pointer;
 }

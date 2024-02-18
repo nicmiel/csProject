@@ -5,7 +5,10 @@ import { ShopContext } from '../../Context/ShopContext';
 const ProductDisplay = (props) => {
 
     const {product} = props;
-    const {addToCart} = useContext(ShopContext);
+    const {addToCart, increaseQuantity, decreaseQuantity, quantity} = useContext(ShopContext);
+    
+   
+
   return (
     <div className='productdisplay'>
         <div className='productdisplay-left'>
@@ -31,7 +34,18 @@ const ProductDisplay = (props) => {
                 <div className="productdisplay-right-price">£{product.book_price}</div>
             </div>
             <div className="productdisplay-right-description">Something about the room type that i will add later because i dont know what to add here.</div>
-            <button onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
+            <div className="quantity-description">
+                <h3>Quantity:</h3>
+                <p className="quantity">
+                    <button className='minus' onClick={decreaseQuantity}>-</button>
+                    <button className='number'>{quantity}</button>
+                    <button className='plus' onClick={increaseQuantity}>+</button>
+                    
+                </p>
+            </div>
+            <button className='cart-button' onClick={()=>{addToCart(product.id)}}>ADD TO CART</button>
+            
+            
         </div>
     </div>
   )

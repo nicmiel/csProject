@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <div className='footer'>
         <div className="footer-logo">
-            <img src=''/>
+            <img src='' alt=''/>
             <p>SITE NAME</p>
         </div>
         <ul className="footer-links">
@@ -26,9 +26,9 @@ const Footer = () => {
                 <img src="" alt="" />
             </div>
         </div>
-        <div className="footer-copyriht">
+        <div className="footer-copyright">
             <hr />
-            <p>Copyriht @ 2024 - All Right Reserved.</p>
+            <p>Copyright @ 2024 - All Right Reserved.</p>
         </div>
     </div>
   )

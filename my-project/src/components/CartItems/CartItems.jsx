@@ -3,8 +3,11 @@ import './CartItems.css'
 import { ShopContext } from '../../Context/ShopContext'
 import remove_icon from '../Assets/cross-icon.png'
 
+
 const CartItems = () => {
-    const {getTotalCartAmount, all_products, cartItems, removeFromCart} = useContext(ShopContext);
+    const {getTotalCartAmount, all_products, cartItems, removeFromCart, quantity} = useContext(ShopContext);
+   
+    
   return (
     <div className='cartitems'>
         <div className="cartitems-format-main">

@@ -66,3 +66,31 @@
 .indicator-inactive {
     background-color: grey;
 }
+
+@media(max-width:1280px){
+    .carousel{
+        width: 80%;
+    }
+    .indicator{
+        height: 0.4rem;
+        width: 0.4rem;
+    }
+}
+@media(max-width:1024px){
+    .carousel{
+        width: 75%;
+    }
+    .indicator{
+        height: 0.3rem;
+        width: 0.3rem;
+    }
+}
+@media(max-width:800px){
+    .carousel{
+        width: 70%;
+    }
+    .indicator{
+        height: 0.25rem;
+        width: 0.25rem;
+    }
+}
