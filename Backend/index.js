@@ -118,6 +118,9 @@ const Users = mongoose.model("Users", {
     cartData:{
         type:Object,
     },
+    checkout_code:{
+        type:String,
+    },
     date:{
         type:Date,
         default:Date.now,
@@ -142,10 +145,12 @@ app.post("/signup", async (req,res)=>{
     for (let i = 0; i < 300; i++) {
         cart[i]=0;
     }
+    
     const user = new Users({
         name:req.body.username,
         email:req.body.email,
         password:req.body.password,
+        checkout_code:req.body.code,
         cartData:cart,
     })
 
@@ -207,6 +212,13 @@ app.post("/addtocart",fetchUser, async (req,res)=>{
     let userData = await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId] += 1;
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
+    res.send("Added");
+})
+
+app.post("/addcode",fetchUser, async (req,res)=>{
+    console.log("added",req.body.code);
+    let userData = await Users.findOne({_id:req.user.id});
+    await Users.findOneAndUpdate({_id:req.user.id},{checkout_code:req.body.code});
     res.send("Added");
 })
 

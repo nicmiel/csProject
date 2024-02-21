@@ -13,6 +13,7 @@ import Rooms from "./components/Rooms"
 import LoginSignup from "./pages/LoginSignup"
 import Product from "./pages/Product"
 import Cart from "./pages/Cart"
+import Checkout from "./components/Checkout/Checkout"
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path="/login" element={<><Login /><LoginSignup /></>} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </div>
       <Footer />

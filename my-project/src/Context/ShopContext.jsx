@@ -21,6 +21,9 @@ const ShopContextProvider = (props)=> {
     const [all_products, setAll_Products] = useState([]);
     const [cartItems, setCartItems] = useState(getDefaultCart());
     const [quantity, setQuantity] = useState(getQuantity());
+    const [code, setCode] = useState({
+        checkout_code:""
+    })
 
     useEffect(()=>{
         fetch("http://localhost:4000/allproducts")
@@ -86,6 +89,24 @@ const ShopContextProvider = (props)=> {
         }
     }
 
+    const makeid = async () => {
+        const code = Math.random().toString(36).substring(2,7);
+        console.log(code);
+        if(localStorage.getItem("auth-token")){
+            fetch("http://localhost:4000/addcode",{
+                method:"POST",
+                headers:{
+                    Accept:"application/form-data",
+                    "auth-token":`${localStorage.getItem("auth-token")}`,
+                    "Content-Type":"application/json",
+                },
+                body:JSON.stringify({"code":code}),
+            })
+            .then((response)=>response.json())
+            .then((data)=>console.log(data));
+        }
+    }
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         for(const item in cartItems)
@@ -111,7 +132,9 @@ const ShopContextProvider = (props)=> {
         return totalItem;
     }
 
-    const contextValue = {quantity, increaseQuantity, decreaseQuantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart};
+    
+
+    const contextValue = {code, makeid, quantity, increaseQuantity, decreaseQuantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart};
 
     return (
         <ShopContext.Provider value={contextValue}>
