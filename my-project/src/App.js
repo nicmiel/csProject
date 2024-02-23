@@ -14,6 +14,7 @@ import LoginSignup from "./pages/LoginSignup"
 import Product from "./pages/Product"
 import Cart from "./pages/Cart"
 import Checkout from "./components/Checkout/Checkout"
+import CompleteCheckout from "./pages/CompleteCheckout"
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<><Login /><LoginSignup /></>} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/postcheckout" element={<CompleteCheckout/>}/>
         </Routes>
       </div>
       <Footer />

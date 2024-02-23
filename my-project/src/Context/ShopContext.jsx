@@ -23,9 +23,9 @@ const ShopContextProvider = (props)=> {
     const [quantity, setQuantity] = useState(getQuantity());
     const [code, setCode] = useState({
         checkout_code:""
-    })
+    })    
 
-    useEffect(()=>{
+  /*  useEffect(()=>{
         fetch("http://localhost:4000/allproducts")
         .then((response)=>response.json())
         .then((data)=>setAll_Products(data))
@@ -41,8 +41,70 @@ const ShopContextProvider = (props)=> {
             }).then((response)=>response.json())
             .then((data)=>setCartItems(data));
         }
+    },[]) */
+
+    useEffect(()=>{
+        fetch("http://localhost:4000/allproducts")
+        .then((response)=>response.json())
+        .then((data)=>setAll_Products(data))
+        if(localStorage.getItem("auth-token")){
+            const fetchCart = fetch("http://localhost:4000/getcart",{
+                method:"POST",
+                headers:{
+                    Accept:"application/form-data",
+                    "auth-token":`${localStorage.getItem("auth-token")}`,
+                    "Content-Type":"application/json",
+                },
+                body:"",
+            }).then((response)=>response.json());
+
+            const fetchCode = fetch("http://localhost:4000/getcode",{
+                method:"POST",
+                headers:{
+                    Accept:"application/form-data",
+                    "auth-token":`${localStorage.getItem("auth-token")}`,
+                    "Content-Type":"application/json",
+                },
+                body:"",
+            }).then((response)=>response.json());
+
+            Promise.all([fetchCart, fetchCode]).then(([cartData, codeData]) =>{
+                setCartItems(cartData);
+                setCode(codeData);
+            })
+        }
     },[])
+
     
+  /*  if(localStorage.getItem("auth-token")){
+        fetch("http://localhost:4000/getcode",{
+            method:"POST",
+            headers:{
+                Accept:"application/form-data",
+                "auth-token":`${localStorage.getItem("auth-token")}`,
+                "Content-Type":"application/json",
+            },
+            body:"",
+        }).then((response)=>response.json())
+        .then((data)=>setCode(data));
+    } */
+
+    const fetchNewCode = async () =>{
+        const response = await fetch("http://localhost:4000/getcode",{
+            method:"POST",
+            headers:{
+                Accept:"application/form-data",
+                "auth-token":`${localStorage.getItem("auth-token")}`,
+                "Content-Type":"application/json",
+            },
+            body:"",
+        });
+        const data = await response.json();
+        return data;
+        
+    } 
+    
+
     const increaseQuantity = () => {
         if (quantity < 20) {
             setQuantity(quantity + 1)
@@ -134,7 +196,7 @@ const ShopContextProvider = (props)=> {
 
     
 
-    const contextValue = {code, makeid, quantity, increaseQuantity, decreaseQuantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart};
+    const contextValue = {fetchNewCode, code, makeid, quantity, increaseQuantity, decreaseQuantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart};
 
     return (
         <ShopContext.Provider value={contextValue}>

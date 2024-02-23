@@ -218,6 +218,7 @@ app.post("/addtocart",fetchUser, async (req,res)=>{
 app.post("/addcode",fetchUser, async (req,res)=>{
     console.log("added",req.body.code);
     let userData = await Users.findOne({_id:req.user.id});
+    userData.checkout_code[req.body.code] = "asdf";
     await Users.findOneAndUpdate({_id:req.user.id},{checkout_code:req.body.code});
     res.send("Added");
 })
@@ -237,6 +238,12 @@ app.post("/getcart",fetchUser, async (req,res)=>{
     console.log("GetCart");
     let userData = await Users.findOne({_id:req.user.id});
     res.json(userData.cartData);
+})
+
+app.post("/getcode",fetchUser, async (req,res)=>{
+    console.log("GetCode");
+    let userData = await Users.findOne({_id:req.user.id});
+    res.json(userData.checkout_code);
 })
 
 app.listen(port, (error)=>{

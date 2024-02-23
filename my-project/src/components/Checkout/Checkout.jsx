@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './Checkout.css'
 import { ShopContext } from '../../Context/ShopContext'
+import { Link } from "react-router-dom"
 
 
 
@@ -42,8 +43,7 @@ const Checkout = () => {
                         <h3>£{getTotalCartAmount()}</h3>
                     </div>
                 </div>
-                <button onClick={()=>makeid(5)}>CHECKOUT</button>
-                
+                <Link to='/postcheckout'><button onClick={()=>makeid(5)}>CHECKOUT</button></Link>
             </div>
         </div>
     </div>
