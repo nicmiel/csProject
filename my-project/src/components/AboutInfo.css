@@ -1,0 +1,9 @@
+.about{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+.about p{
+    font-size: 20px;
+    font-weight: 400;
+}

@@ -15,6 +15,8 @@ import Product from "./pages/Product"
 import Cart from "./pages/Cart"
 import Checkout from "./components/Checkout/Checkout"
 import CompleteCheckout from "./pages/CompleteCheckout"
+import Featurette2 from "./components/Featurette2"
+import AboutInfo from "./components/AboutInfo"
 
 function App() {
   return (
@@ -22,9 +24,9 @@ function App() {
       <Navbar />
       <div className="container">
         <Routes>
-          <Route path="/" element={<><Home /><Carousel data={data}/><Popular /><Featurette /><Featurette /></>} />
+          <Route path="/" element={<><Home /><Carousel data={data}/><Popular /><Featurette /><Featurette2 /></>} />
           <Route path="/pricing" element={<><Pricing />< Rooms/></>} />
-          <Route path="/about" element={<About />} />
+          <Route path="/about" element={<><About /><AboutInfo /></>} />
           <Route path="/product" element={<Product />}>
             <Route path=":productId" element={<Product />} />
           </Route>

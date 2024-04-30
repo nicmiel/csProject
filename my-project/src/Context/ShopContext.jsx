@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export const ShopContext = createContext(null);
 
@@ -24,24 +25,9 @@ const ShopContextProvider = (props)=> {
     const [code, setCode] = useState({
         checkout_code:""
     })    
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
 
-  /*  useEffect(()=>{
-        fetch("http://localhost:4000/allproducts")
-        .then((response)=>response.json())
-        .then((data)=>setAll_Products(data))
-        if(localStorage.getItem("auth-token")){
-            fetch("http://localhost:4000/getcart",{
-                method:"POST",
-                headers:{
-                    Accept:"application/form-data",
-                    "auth-token":`${localStorage.getItem("auth-token")}`,
-                    "Content-Type":"application/json",
-                },
-                body:"",
-            }).then((response)=>response.json())
-            .then((data)=>setCartItems(data));
-        }
-    },[]) */
 
     useEffect(()=>{
         fetch("http://localhost:4000/allproducts")
@@ -75,20 +61,15 @@ const ShopContextProvider = (props)=> {
         }
     },[])
 
+    const calculateDateDifference = () => {
+        if (startDate && endDate) {
+          const differenceInTime = endDate.getTime() - startDate.getTime();
+          const differenceInDays = differenceInTime / (1000 * 3600 * 24); // Convert milliseconds to days
+          return differenceInDays;
+        }
+        return null;
+      };
     
-  /*  if(localStorage.getItem("auth-token")){
-        fetch("http://localhost:4000/getcode",{
-            method:"POST",
-            headers:{
-                Accept:"application/form-data",
-                "auth-token":`${localStorage.getItem("auth-token")}`,
-                "Content-Type":"application/json",
-            },
-            body:"",
-        }).then((response)=>response.json())
-        .then((data)=>setCode(data));
-    } */
-
     const fetchNewCode = async () =>{
         const response = await fetch("http://localhost:4000/getcode",{
             method:"POST",
@@ -105,19 +86,7 @@ const ShopContextProvider = (props)=> {
     } 
     
 
-    const increaseQuantity = () => {
-        if (quantity < 20) {
-            setQuantity(quantity + 1)
-        }
-    }
-
-    const decreaseQuantity = () => {
-        if (quantity > 1) {
-            setQuantity(quantity - 1)
-        }
-    }
-
-    const addToCart = (itemId) =>{
+    const addToCart = (itemId, quantity) =>{
         setCartItems((prev)=>({...prev, [itemId]:prev[itemId]+quantity}))
         if(localStorage.getItem("auth-token")){
             fetch("http://localhost:4000/addtocart",{
@@ -196,7 +165,8 @@ const ShopContextProvider = (props)=> {
 
     
 
-    const contextValue = {fetchNewCode, code, makeid, quantity, increaseQuantity, decreaseQuantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart};
+    const contextValue = {fetchNewCode, code, makeid, quantity, getTotalCartItems, getTotalCartAmount, all_products, cartItems, addToCart, removeFromCart, startDate,
+    endDate,setStartDate, setEndDate, calculateDateDifference};
 
     return (
         <ShopContext.Provider value={contextValue}>

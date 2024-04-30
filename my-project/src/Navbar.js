@@ -11,9 +11,9 @@ export default function Navbar() {
     <nav className="nav">
       <ul>
       <Link to="/" className="site-title">
-        Site Name
+        Hotel Name
       </Link>
-        <CustomLink to="/pricing">Pricing</CustomLink>
+        <CustomLink to="/pricing">Our Rooms</CustomLink>
         <CustomLink to="/about">About</CustomLink>
       </ul>
       <ul>

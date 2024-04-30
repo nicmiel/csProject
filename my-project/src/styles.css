@@ -49,6 +49,7 @@
   .nav button{
     width: 100px;
     height: 40px;
+    margin-top: 7px;
     outline: none;
     border: 1px solid #7a7a7a;
     border-radius: 75px;

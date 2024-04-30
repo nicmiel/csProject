@@ -1,0 +1,119 @@
+.featurette{
+    position: relative;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 100px;
+    padding-bottom: 10px;
+}
+.featurette-1{
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    margin: auto;
+    padding: 0px 140px;
+    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
+}
+.featurette-1-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.featurette-1-right h1{
+    color: #171717;
+    font-size: 50px;
+    font-weight: 600;
+}
+.featurette-1-right p{
+    color: #171717;
+    font-size: 18px;
+    font-weight: 600;
+}
+.featurette-1-left{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 50px;
+}
+.featurette-1-left img{
+    height: 500px;
+    width: 700px;
+}
+@media(max-width:1280px){
+    .featurette-1-left img{
+        height: 275px;
+        width: 275px;
+    }
+    .featurette-1-right h1{
+        font-size: 40px;
+    }
+    .featurette-1-right p{
+        font-size: 16px;
+    }
+}
+@media(max-width:1024px){
+    .featurette-1-left img{
+        height: 250px;
+        width: 250px;
+    }
+    .featurette-1-right h1{
+        font-size: 35px;
+    }
+    .featurette-1-right p{
+        font-size: 14px;
+    }
+}
+@media(max-width:800px){
+    .featurette-1-left img{
+        height: 220px;
+        width: 220px;
+    }
+    .featurette-1-right h1{
+        font-size: 30px;
+    }
+    .featurette-1-right p{
+        font-size: 13px;
+    }
+}
+
+.featurette-2{
+    width: 100%;
+    height: 60vh;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    padding: 0px 140px; 
+    padding-bottom: 6px;
+    margin-bottom: 150px;
+    background: linear-gradient(180deg, #fde1ff 0%, #e1ffea22 60%);
+}
+.featurette-2-left{
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+}
+.featurette-2-right h1{
+    color: #171717;
+    font-size: 50px;
+    font-weight: 600;
+}
+.featurette-2-right p{
+    color: #171717;
+    font-size: 18px;
+    font-weight: 600;
+}
+.featurette-2-right{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

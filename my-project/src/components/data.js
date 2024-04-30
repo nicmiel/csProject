@@ -1,14 +1,18 @@
+import penthouse3 from './penthouse3.jpg';
+import deluxe4 from './deluxe4.jpg';
+import studio1 from './studio1.jpg';
+
 export const data = [
     {
-        src: "https://picsum.photos/seed/img1/1920/1080",
+        src: penthouse3,
         alt: "image 1"
     },
     {
-        src: "https://picsum.photos/seed/img2/1920/1080",
-        alt: "image 1"
+        src: deluxe4,
+        alt: "image 2"
     },
     {
-        src: "https://picsum.photos/seed/img3/1920/1080",
-        alt: "image 1"
+        src: studio1,
+        alt: "image 3"
     }
 ];

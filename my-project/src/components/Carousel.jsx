@@ -30,9 +30,6 @@ export const Carousel = ({data}) => {
                 );
             })}
         </span>
-        <div className="text-on-image">
-            <p>something about the image.</p>
-        </div>
         </div>
     );
 };

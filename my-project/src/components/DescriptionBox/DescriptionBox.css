@@ -18,6 +18,12 @@
     background: #FBFBFB;
     color: #555;
 }
+.amenities-image{
+    width: 900px;
+    height: 180px;
+    margin: auto;
+    display: block;
+}
 .descriptionbox-description{
     display: flex;
     flex-direction: column;
@@ -25,4 +31,7 @@
     border: 1px solid #d0d0d0;
     padding: 48px;
     padding-bottom: 70px;
+}
+.descriptionbox-description p{
+    font-size: 18px;
 }

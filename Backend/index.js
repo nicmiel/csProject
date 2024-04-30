@@ -55,6 +55,22 @@ const Product = mongoose.model("Product", {
         type:String,
         required:true,
     },
+    image2:{
+        type:String,
+        required:true,
+    },
+    image3:{
+        type:String,
+        required:true,
+    },
+    image4:{
+        type:String,
+        required:true,
+    },
+    image5:{
+        type:String,
+        required:true,
+    },
     book_price:{
         type:Number,
         required:true,
@@ -80,6 +96,10 @@ app.post("/addproduct", async (req,res)=>{
         id:id,
         name:req.body.name,
         image:req.body.image,
+        image2:req.body.image2,
+        image3:req.body.image3,
+        image4:req.body.image4,
+        image5:req.body.image5,
         book_price:req.body.book_price,
     })
     console.log(product);
@@ -127,7 +147,7 @@ const Users = mongoose.model("Users", {
     }
 })
 
-//Creating Endpoint for gettign all products
+//Creating Endpoint for getting all products
 app.get("/allproducts",async (req,res)=>{
     let products = await Product.find({});
     console.log("all products fetched");
@@ -214,7 +234,7 @@ app.post("/addtocart",fetchUser, async (req,res)=>{
     await Users.findOneAndUpdate({_id:req.user.id},{cartData:userData.cartData});
     res.send("Added");
 })
-
+//Creating Endpoint for adding new code
 app.post("/addcode",fetchUser, async (req,res)=>{
     console.log("added",req.body.code);
     let userData = await Users.findOne({_id:req.user.id});
@@ -240,6 +260,7 @@ app.post("/getcart",fetchUser, async (req,res)=>{
     res.json(userData.cartData);
 })
 
+//Creating Endpoint to getcode
 app.post("/getcode",fetchUser, async (req,res)=>{
     console.log("GetCode");
     let userData = await Users.findOne({_id:req.user.id});
